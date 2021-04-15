@@ -3,11 +3,7 @@
 
 name: Lint Code and Run Tests
 
-on:
-  pull_request:
-    branches: [develop]
-  push:
-    branches: [develop]
+on: [push, pull_request]
 
 jobs:
   lint:
@@ -38,7 +34,6 @@ jobs:
         pip install pytest
         pip install pytest-cov
         pytest --cov-config=.coveragerc
-        pytest --cov=./ --cov-report=xml
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v1
       with:
